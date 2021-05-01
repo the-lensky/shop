@@ -6,11 +6,11 @@ import Shop from './components/Shop'
 function App() {
     return (
         <>
-       <Header />
-       <Shop />
-       <Footer />
-    </>
-       )
+            <Header/>
+            <Shop/>
+            <Footer/>
+        </>
+    )
 }
 
 export default App

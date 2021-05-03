@@ -16,7 +16,9 @@ const GoodsItem = (props) => {
             <div className="card-action">
                 <button
                     className="btn waves-effect waves-light "
-                    onClick={() => {addToBasket(id, name, price)}}
+                    onClick={() => {
+                        addToBasket({id, name, price})
+                    }}
                     type="submit"
                 >
                     Купить

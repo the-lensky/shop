@@ -10,6 +10,7 @@ const Shop = () => {
     const [loading, setLoading] = useState(true)
     console.log(order)
     const addToBasket = (item) => {
+        console.log(item)
         const itemIndex = order.findIndex(
             (orderItem) => orderItem.id === item.id
         )
@@ -47,6 +48,7 @@ const Shop = () => {
                 setLoading(false)
             })
     }, [])
+
 
     return (
         <main className='container content'>

@@ -1,7 +1,14 @@
 import { createContext, useReducer } from 'react'
 import { reducer } from './reducer'
-
-export const ShopContext = createContext()
+import {
+    CLOSE_ALERT,
+    ADD_TO_BASKET,
+    INCREMENT_QUANTITY,
+    DECREMENT_QUANTITY,
+    REMOVE_FROM_BASKET,
+    TOGGLE_BASKET,
+    SET_GOODS
+} from './actions'
 
 const initialState = {
     goods: [],
@@ -11,35 +18,37 @@ const initialState = {
     alertName: '',
 }
 
+export const ShopContext = createContext()
+
 export const ContextProvider = ({children}) => {
     const [value, dispatch] = useReducer(reducer, initialState)
 
     value.closeAlert = () => {
-        dispatch({type: 'CLOSE_ALERT'})
+        dispatch({type: CLOSE_ALERT})
     }
 
     value.addToBasket = (item) => {
-        dispatch({type: 'ADD_TO_BASKET', payload: item})
+        dispatch({type: ADD_TO_BASKET, payload: item})
     }
 
     value.incQuantity = (itemId) => {
-        dispatch({type: 'INCREMENT_QUANTITY', payload: {id: itemId}})
+        dispatch({type: INCREMENT_QUANTITY, payload: {id: itemId}})
     }
 
     value.decQuantity = (itemId) => {
-        dispatch({type: 'DECREMENT_QUANTITY', payload: {id: itemId}})
+        dispatch({type: DECREMENT_QUANTITY, payload: {id: itemId}})
     }
 
     value.removeFromBasket = (itemId) => {
-        dispatch({type: 'REMOVE_FROM_BASKET', payload: {id: itemId}})
+        dispatch({type: REMOVE_FROM_BASKET, payload: {id: itemId}})
     }
 
     value.handleBasketShow = () => {
-        dispatch({type: 'TOGGLE_BASKET'})
+        dispatch({type: TOGGLE_BASKET})
     }
 
     value.setGoods = (data) => {
-        dispatch({type: 'SET_GOODS', payload: data})
+        dispatch({type: SET_GOODS, payload: data})
     }
 
     return (

@@ -1,12 +1,22 @@
+import {
+    CLOSE_ALERT,
+    ADD_TO_BASKET,
+    INCREMENT_QUANTITY,
+    DECREMENT_QUANTITY,
+    REMOVE_FROM_BASKET,
+    TOGGLE_BASKET,
+    SET_GOODS
+} from './actions'
+
 export function reducer(state, {type, payload}) {
     switch (type) {
-        case 'SET_GOODS':
+        case SET_GOODS:
             return {
                 ...state,
                 goods: payload || [],
                 loading: false,
             }
-        case 'ADD_TO_BASKET': {
+        case ADD_TO_BASKET: {
             const itemIndex = state.order.findIndex(
                 (orderItem) => orderItem.id === payload.id
             )
@@ -37,12 +47,12 @@ export function reducer(state, {type, payload}) {
                 alertName: payload.name,
             }
         }
-        case 'REMOVE_FROM_BASKET':
+        case REMOVE_FROM_BASKET:
             return {
                 ...state,
                 order: state.order.filter((el) => el.id !== payload.id),
             }
-        case 'INCREMENT_QUANTITY':
+        case INCREMENT_QUANTITY:
             return {
                 ...state,
                 order: state.order.map((el) => {
@@ -57,7 +67,7 @@ export function reducer(state, {type, payload}) {
                     }
                 }),
             }
-        case 'DECREMENT_QUANTITY':
+        case DECREMENT_QUANTITY:
             return {
                 ...state,
                 order: state.order.map((el) => {
@@ -72,12 +82,12 @@ export function reducer(state, {type, payload}) {
                     }
                 }),
             }
-        case 'CLOSE_ALERT':
+        case CLOSE_ALERT:
             return {
                 ...state,
                 alertName: '',
             }
-        case 'TOGGLE_BASKET':
+        case TOGGLE_BASKET:
             return {
                 ...state,
                 isBasketShow: !state.isBasketShow,

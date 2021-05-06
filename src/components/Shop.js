@@ -13,8 +13,8 @@ import Alert from './Alert'
 
 const Shop = () => {
 
-    const {order, setGoods, loading,  isBasketShow, alertName} = useContext(ShopContext)
-    console.log(order)
+    const {order, setGoods, loading, isBasketShow, alertName} = useContext(ShopContext)
+
     useEffect(function getGoods() {
         fetch(API_URL, {
             headers: {
@@ -29,7 +29,7 @@ const Shop = () => {
 
     return (
         <main className='container content'>
-            <Cart quantity={order.length} />
+            <Cart quantity={order.length}/>
             {loading ? <Preloader/> : <GoodsList/>}
             {isBasketShow && <BasketList/>}
             {alertName && <Alert/>}
